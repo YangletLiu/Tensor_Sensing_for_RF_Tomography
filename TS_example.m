@@ -1,5 +1,5 @@
 function TS_example(DCTorFFt)
-    %% ¹¹ÔìÈË¹¤Êı¾İ
+    %% æ„é€ äººå·¥æ•°æ®
     L = randn(40, 1, 6);
     R = randn(1, 40, 6);
     X = tProd(L, R, true);
@@ -24,16 +24,16 @@ function TS_example(DCTorFFt)
     error_all = zeros(iterationNums, samplingNums);
     while(minSamplingRate <= maxSamplingRate)  
         nums = floor(m*k*n*minSamplingRate/100);
-        A_all = sparse(m*k*n, nums);       %ËùÓĞµÄ A_s_v ÏòÁ¿µşÔÚÒ»Æğ×é³ÉÒ»¸ö´ó¾ØÕó
+        A_all = sparse(m*k*n, nums);       %æ‰€æœ‰çš„ A_s_v å‘é‡å åœ¨ä¸€èµ·ç»„æˆä¸€ä¸ªå¤§çŸ©é˜µ
         A_all_t = sparse(m*k*n, nums);
-        %% ¹¹ÔìÂú×ãË¥¼õÌØĞÔµÄ²ÉÑùtensor
+        %% æ„é€ æ»¡è¶³è¡°å‡ç‰¹æ€§çš„é‡‡æ ·tensor
         for i = 1 : nums
             sampling_tensor = generate_sampling_tensor(sz_X, 20);
             A_s = Tensor2SmallCircM(sampling_tensor);
             A_s = sparse(A_s);
             A_s_t = A_s.';
 
-            A_s_v = A_s(:);                    %  A_s_v ±íÊ¾A_sµÄÏòÁ¿»¯
+            A_s_v = A_s(:);                    %  A_s_v è¡¨ç¤ºA_sçš„å‘é‡åŒ–
             A_s_t_v = A_s_t(:);
 
             A_all(:, i) = A_s_v;
@@ -41,15 +41,18 @@ function TS_example(DCTorFFt)
         end
         A_all = A_all.';
         A_all_t = A_all_t.';
-        y = sparse(A_all*X_s(:));
+        y_ = sparse(A_all*X_s(:));
+        [m, n] = size(y_);
+        noise = normrnd(0, 1, m, n);
+        y = y_ + noise;
 
-        [RSE,error_single] = TS(X, X_s, A_all, A_all_t, y, iterationNums, r, minSamplingRate);    % 10Îªµü´ú´ÎÊı£¬rÎªrank
+        [RSE,error_single] = TS(X, X_s, A_all, A_all_t, y, iterationNums, r, minSamplingRate);    % 10ä¸ºè¿­ä»£æ¬¡æ•°ï¼Œrä¸ºrank
         error_all(:, errot_index) = error_single;
         error(errot_index, 1) = RSE;
         minSamplingRate = minSamplingRate + 5;
         errot_index = errot_index  + 1;
     end
-    %% »­Îó²îÇúÏß                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
+    %% ç”»è¯¯å·®æ›²çº¿                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
     plotRSE(DCTorFFt, minSamplingRate_copy, maxSamplingRate, error');
     plot_shou_lian_lv(DCTorFFt, iterationNums, error_all(:,13)');
 end
