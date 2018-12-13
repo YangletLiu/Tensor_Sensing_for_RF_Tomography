@@ -2,7 +2,7 @@
 RF Tomography imaging
 
 ## Usage
-Basicly, we select IKEA 3D dataset as an example. ![IKEA 3D](http://ikea.csail.mit.edu/)
+Basicly, we select IKEA 3D dataset as an example. [IKEA 3D](http://ikea.csail.mit.edu/)
 
 Run `./run_TS.m` to recover the unkowm tensor, you can input `dct` for DCT transform or `fft` for FFT transform. You can change the parameters such as the size of the unknown tenor, the sampling rates, the iteration times in `./TS_example.m`. The main steps of the algorithm <b>Alt-Min</b> is in `./TS.m`. And the `./toolbox` contains the dependent functions.
 
