@@ -41,6 +41,7 @@ function TS_example(DCTorFFt)
         end
         A_all = A_all.';
         A_all_t = A_all_t.';
+        
         y_ = sparse(A_all*X_s(:));
         [m, n] = size(y_);
         noise = normrnd(0, 1, m, n);
