@@ -1,29 +1,32 @@
-%% Éú³É²ÉÑùtensor£¬sz±íÊ¾ÆäÎ¬¶È£¬L±íÊ¾Ò»¸ö²ÉÑùtensorÀïÃæÓĞ¶àÉÙÌõlink
-function [sample_tensor] = generate_sampling_tensor(sz, L)
+%% ç”Ÿæˆé‡‡æ ·tensorï¼Œszè¡¨ç¤ºå…¶ç»´åº¦ï¼ŒLè¡¨ç¤ºä¸€ä¸ªé‡‡æ ·tensoré‡Œé¢æœ‰å¤šå°‘æ¡link
+function [sample_tensor, sample_tensor_real] = generate_sampling_tensor(sz, L)
     m = sz(1);
     n = sz(2);
     k = sz(3);
     sample_tensor = zeros(m, n, k);
+    sample_tensor_real = zeros(m, n, k);
     for ii = 1 : 1 : L
-        one_side = randi([1, 4]); %ÔÚ 1-4 ²àÃæÖĞËæ»úÑ¡È¡Ò»¸ö²àÃæ£¬1 3Îª60*15£¬2 4Îª60*60
-        if mod(one_side, 2) == 1  %Ñ¡Ôñ±êºÅÎªÅ¼ÊıµÄÁ½¸öÃæ
-            %´ÓÁ½¸öÃæÖĞ¸÷Ëæ»úÈ¡Ò»¸öµã
+        one_side = randi([1, 4]); %åœ¨ 1-4 ä¾§é¢ä¸­éšæœºé€‰å–ä¸€ä¸ªä¾§é¢ï¼Œ1 3ä¸º60*15ï¼Œ2 4ä¸º60*60
+        if mod(one_side, 2) == 1  %é€‰æ‹©æ ‡å·ä¸ºå¶æ•°çš„ä¸¤ä¸ªé¢
+            %ä»ä¸¤ä¸ªé¢ä¸­å„éšæœºå–ä¸€ä¸ªç‚¹
             a = randi([1, m], 2, 1);
             b = randi([1, k], 2, 1);
-            transmit = [a(1, 1), 1, b(1, 1)]; %·¢Éä½ÚµãµÄ×ø±ê
-            recieve = [a(2, 1), n, b(2, 1)]; %½ÓÊÕ½ÚµãµÄ×ø±ê
-        else %Ñ¡Ôñ±êºÅÎªÆæÊıµÄÁ½¸öÃæ
+            transmit = [a(1, 1), 1, b(1, 1)]; %å‘å°„èŠ‚ç‚¹çš„åæ ‡
+            recieve = [a(2, 1), n, b(2, 1)]; %æ¥æ”¶èŠ‚ç‚¹çš„åæ ‡
+        else %é€‰æ‹©æ ‡å·ä¸ºå¥‡æ•°çš„ä¸¤ä¸ªé¢
             a = randi([1, m], 2, 1);
             b = randi([1, n], 2, 1);
             transmit = [a(1, 1), b(1, 1), 1];
             recieve = [a(2, 1), b(2, 1), k];
         end
-        % one_linkÎªÒ»¶Ô·¢Éä½ÓÊÕ½ÚµãÖ®¼äµÄĞÅµÀÁ´½Ó£¬·µ»Ø¸ÃÁ´½Ó¾­¹ıµÄµãºÍµãµÄ×ø±ê
-        [energy_in_each_point, point_passed] = one_link(transmit, recieve);
+        % one_linkä¸ºä¸€å¯¹å‘å°„æ¥æ”¶èŠ‚ç‚¹ä¹‹é—´çš„ä¿¡é“é“¾æ¥ï¼Œè¿”å›è¯¥é“¾æ¥ç»è¿‡çš„ç‚¹å’Œç‚¹çš„åæ ‡
+        [energy_in_each_point, point_passed, energy_in_each_point_real] = one_link(transmit, recieve);
 
         for i = 1 : 1 : size(energy_in_each_point, 1)
             sample_tensor(point_passed(i, 1), point_passed(i, 2), point_passed(i, 3)) = energy_in_each_point(i, 1);
+            sample_tensor_real(point_passed(i, 1), point_passed(i, 2), point_passed(i, 3)) = energy_in_each_point_real(i, 1);
         end
     end
     sample_tensor = sample_tensor/100;
+    sample_tensor_real = sample_tensor_real/100;
 end
