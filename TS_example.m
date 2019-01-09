@@ -20,7 +20,7 @@ function TS_example(DCTorFFt)
     samplingNums = (maxSamplingRate - minSamplingRate)/5 + 1;
     error = zeros(samplingNums, 1);
     errot_index = 1;
-    iterationNums = 4;
+    iterationNums = 10;
     eta = 0.2;
     error_all = zeros(iterationNums, samplingNums);
     while(minSamplingRate <= maxSamplingRate)  
