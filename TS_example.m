@@ -21,6 +21,7 @@ function TS_example(DCTorFFt)
     error = zeros(samplingNums, 1);
     errot_index = 1;
     iterationNums = 4;
+    eta = 0.2;
     error_all = zeros(iterationNums, samplingNums);
     while(minSamplingRate <= maxSamplingRate)  
         nums = floor(m*k*n*minSamplingRate/100);
@@ -43,8 +44,8 @@ function TS_example(DCTorFFt)
         A_all_t = A_all_t.';
         
         y_ = sparse(A_all*X_s(:));
-        [m, n] = size(y_);
-        noise = normrnd(0, 1, m, n);
+        [o, p] = size(y_);
+        noise = normrnd(0, eta*eta, o, p);
         y = y_ + noise;
 
         [RSE,error_single] = TS(X, X_s, A_all, A_all_t, y, iterationNums, r, minSamplingRate);    % 10为迭代次数，r为rank
