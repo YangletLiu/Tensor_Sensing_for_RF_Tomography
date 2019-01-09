@@ -1,12 +1,12 @@
-function [energy_in_each_point, point_passed] = one_link(transmit, recieve)
+function [energy_in_each_point, point_passed, energy_in_each_point_real] = one_link(transmit, recieve)
     point_passed = [];
     difference_x = abs(transmit(1) - recieve(1));
     difference_y = abs(transmit(2) - recieve(2));
     difference_z = abs(transmit(3) - recieve(3));
-    [~, index] = max([difference_x difference_y difference_z]); %Ñ¡xyzÈı¸ö×ø±êÖĞ²îÖµ×î´óµÄ
+    [~, index] = max([difference_x difference_y difference_z]); %é€‰xyzä¸‰ä¸ªåæ ‡ä¸­å·®å€¼æœ€å¤§çš„
     switch index
         case 1
-            %×ø±êÒÀ´Î¼ÓÒ»µİÔö
+            %åæ ‡ä¾æ¬¡åŠ ä¸€é€’å¢
             for var_x = min(transmit(1), recieve(1)) : 1 : max(transmit(1), recieve(1))
                 cons = (var_x - transmit(1))/(recieve(1) - transmit(1));
                 var_y = cons * (recieve(2) - transmit(2)) + transmit(2);
@@ -31,7 +31,12 @@ function [energy_in_each_point, point_passed] = one_link(transmit, recieve)
     point_passed = ceil(point_passed);
     distance_all_point = sum(abs(point_passed - transmit).^2,2).^(1/2);
     distance_all_point = sortrows(distance_all_point, 1);
-    energy_loss = 10 * 2 * log10(distance_all_point);
+    % large-scale path lossï¼š 10 * /alpha * log(dis(i, j)) + /beta
+    energy_loss = 10 * 2 * log10(distance_all_point);    %   ç”¨äºæ±‚è§£æ—¶çš„ A
+    energy_loss_real = energy_loss + rand(size(energy_loss,1), 1);  %  ç”¨äºä¿¡å·ä¼ æ’­è¿‡ç¨‹ä¸­çš„  A
+   
     energy_loss(1, 1) = 0;
+    energy_loss_real(1, 1) = 0;
     energy_in_each_point = 100 - energy_loss;
+    energy_in_each_point_real = 100 - energy_loss_real;
 end
