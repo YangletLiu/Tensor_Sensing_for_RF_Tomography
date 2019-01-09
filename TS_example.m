@@ -66,7 +66,7 @@ function TS_example(DCTorFFt)
         noise = normrnd(0, eta*eta, o, p);
         y = y_ + noise;
 
-        [RSE,error_single] = TS(X, X_s, A_all_real, A_all_t_real, y, iterationNums, r, minSamplingRate);    % 10为迭代次数，r为rank
+        [RSE,error_single] = TS(X, X_s, A_all, A_all_t, y, iterationNums, r, minSamplingRate);    % 10为迭代次数，r为rank
         error_all(:, errot_index) = error_single;
         error(errot_index, 1) = RSE;
         minSamplingRate = minSamplingRate + 5;
