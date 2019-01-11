@@ -11,10 +11,10 @@ We compare the proposed algorithm Alt-Min with tensor-based compressed sensing [
 
 For the simulations of the wireless channel, the space of interest is divided into a set of three-dimensional voxels, and a set of RF signal nodes are uniformly deployed around the space, forming a complete tomography network. Any pair of nodes can establish a unique wireless link, and the path loss on a wireless link has three contributions: (1) Large-scale path loss due to distance; (2) Shadowing loss due to obstructions; and (3) Non-shadowing loss due to multipath [2,3].  
 
-<div align=center><img src="https://github.com/hust512/Tensor_Sensing_for_RF_Tomography/blob/master/Fig/chair_orgin.jpg" width="200"  /><img src="https://github.com/hust512/Tensor_Sensing_for_RF_Tomography/blob/master/Fig/chair_recover.jpg" width="200" hspace="50" /><img src="https://github.com/hust512/Tensor_Sensing_for_RF_Tomography/blob/master/Fig/table_orgin.jpg" width="200" hspace="5" /><img src="https://github.com/hust512/Tensor_Sensing_for_RF_Tomography/blob/master/Fig/table_recover.jpg" width="200" hspace="5" />
+<div align=center><img src="https://github.com/hust512/Tensor_Sensing_for_RF_Tomography/blob/master/Fig/chair_orgin.jpg" width="200"  /><img src="https://github.com/hust512/Tensor_Sensing_for_RF_Tomography/blob/master/Fig/chair_recover.jpg" width="200" hspace="5" /><img src="https://github.com/hust512/Tensor_Sensing_for_RF_Tomography/blob/master/Fig/table_orgin.jpg" width="200" hspace="5" /><img src="https://github.com/hust512/Tensor_Sensing_for_RF_Tomography/blob/master/Fig/table_recover.jpg" width="200" hspace="5" />
 </div>
 
-<div align=center>Fig.1 the first and second are the 3D visualizations of two IKEA models, the third and forth are the corresponding recovery results.</div>
+<div align=center>Fig.1 the first and third are the 3D visualizations of two IKEA models, the second and forth are the corresponding recovery results.</div>
 
 
 <div align=center><img src="https://github.com/hust512/Tensor_Sensing_for_RF_Tomography/blob/master/Fig/RSE_4_1.jpeg" width="280"/><img src="https://github.com/hust512/Tensor_Sensing_for_RF_Tomography/blob/master/Fig/shoulianlv_dct_4_1.jpeg" width="280"/><img src="https://github.com/hust512/Tensor_Sensing_for_RF_Tomography/blob/master/Fig/shoulianlv_fft_4_1.jpeg" width="280"/>
