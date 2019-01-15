@@ -9,7 +9,7 @@ Run `./run_TS.m` to recover the unkowm tensor, you can input `dct` for DCT trans
 ## Experiment
 We compare the proposed algorithm Alt-Min with tensor-based compressed sensing [2] on 50 IKEA 3D models. Each 3D model is used to generate one ground truth tensor of size $60\times 60\times 15$, which is placed in the middle of the `tensor` and occupies a part of the space.
 
-For the simulations of the wireless channel, the space of interest is divided into a set of three-dimensional voxels, and a set of RF signal nodes are uniformly deployed around the space, forming a complete tomography network. Any pair of nodes can establish a unique wireless link, and the path loss on a wireless link has three contributions: (1) Large-scale path loss due to distance; (2) Shadowing loss due to obstructions; and (3) Non-shadowing loss due to multipath [2,3].  
+For the simulations of the wireless channel, the space of interest is divided into a set of three-dimensional voxels, and a set of RF signal nodes are uniformly deployed around the space, forming a complete tomography network. Any pair of nodes can establish a unique wireless link, and the path loss on a wireless link has three contributions: (1) Large-scale path loss due to distance; (2) Shadowing loss due to obstructions; and (3) Non-shadowing loss due to multipath [2,3]. The relevant code is in `./toolbox/generate_sampling_tensor.m` and `./toolbox/one_link.m`.  
 
 <div align=center><img src="https://github.com/hust512/Tensor_Sensing_for_RF_Tomography/blob/master/Fig/model.png" />
 </div>
