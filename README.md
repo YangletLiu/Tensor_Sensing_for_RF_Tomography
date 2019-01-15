@@ -14,6 +14,8 @@ For the simulations of the wireless channel, the space of interest is divided in
 <div align=center><img src="https://github.com/hust512/Tensor_Sensing_for_RF_Tomography/blob/master/Fig/model.png" />
 </div>
 
+<div> </div>
+
 <div align=center>Fig.1 (a) and (c) are the 3D visualizations of two IKEA models, (b) and (d) are the corresponding recovery results.</div>
 
 
