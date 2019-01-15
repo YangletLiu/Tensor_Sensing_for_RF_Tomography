@@ -19,7 +19,7 @@ For the simulations of the wireless channel, the space of interest is divided in
 <div> </div>
 
 
-<div align=center><img src="https://github.com/hust512/Tensor_Sensing_for_RF_Tomography/blob/master/Fig/RSE_4_1.jpeg" width="280"/><img src="https://github.com/hust512/Tensor_Sensing_for_RF_Tomography/blob/master/Fig/shoulianlv_dct_4_1.jpeg" width="280"/><img src="https://github.com/hust512/Tensor_Sensing_for_RF_Tomography/blob/master/Fig/shoulianlv_fft_4_1.jpeg" width="280"/>
+<div align=center><img src="https://github.com/hust512/Tensor_Sensing_for_RF_Tomography/blob/master/Fig/result.png" />
 </div>
 
 <div align=center>Fig.2 the first is RSEs vs sampling rates; the second is Alt-Min with FFT; the third is Alt-Min with DCT.</div>
